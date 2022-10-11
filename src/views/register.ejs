@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head.ejs')  %> 
+<body>
+  <%- include('partials/header.ejs')  %> 
+
+  <h1>REGISTER</h1> 
+  
+  <% if (typeof message !== 'undefined') { %>
+    <%= message %>
+  <% } %>  
+
+  <form action="/register/add" method="POST">
+    
+    <div>
+      <label for="">Name</label>
+      <input type="text" name="name" placeholder="Type your name">
+    </div>
+
+    <div>
+      <label for="">Age</label>
+      <input type="text" name="age" placeholder="Type your age">
+    </div>
+
+    <div>
+      <label for="">E-mail</label>
+      <input type="email" name="email" placeholder="type your e-mail">
+    </div>
+
+    <div>
+      <label for="">Password</label>
+      <input type="password" name="password" placeholder="Type your password">
+    </div>
+
+    <button type="submit">Register</button>
+
+  </form>
+  
+
+<%- include('partials/foot.ejs')  %>   
+</body>
+</html>

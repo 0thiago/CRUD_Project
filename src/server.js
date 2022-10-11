@@ -1,7 +1,15 @@
-const express = require('express')
-const path = require('path')
+const express = require('express') //import module express
+const path = require('path') //path receive the app path
+
+// const bcrypt = require('bcrypt') // imported on util/password
+
+const db = require('./database')
+const routes = require('./routes')
 
 const app = express()
+
+//connecting to database
+db.connect()
 
 //setting ejs as template engine
 app.set('view engine', 'ejs')
@@ -15,22 +23,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 //allowing the project receiver data from forms
 app.use(express.urlencoded({ extended: true }))
 
-//routes:
-//INDEX
-app.get('/', (req,res) => {
-  res.render('index', {
-    title: 'CRUD Index'
-  })
-})
-
-//404 page not found
-app.use((req, res) => { //middleware
-  res.send('Error 404 - Page Not Found')
-})
+//setting the routes
+app.use('/', routes) // static pages
 
 //running server
 const port = process.env.PORT || 8080
-app.listen(port,()=> { 
+app.listen(port, ()=> { 
   console.log('The server is running on '+port) 
 })
 

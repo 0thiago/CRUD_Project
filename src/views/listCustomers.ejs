@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head.ejs') %>
+
+  <body>
+    <%- include('partials/header.ejs') %>
+      <h1>List of Customers</h1>
+
+      <ul>
+        <% users.forEach((element) => { %>
+          <li>
+            <%= element.name %> - <%= element.age %>  - <%= element.email %> - <a href="/edit?id=<%= element._id %>">[edit]</a> - <a href="#" data-name="<%= element.name %>" data-id="/remove/<%= element._id %>" id="removeCustomer">[remove]</a>
+          </li>
+          <% }) %>
+      </ul>
+      <%- include('partials/foot.ejs') %>
+  </body>
+
+</html>
